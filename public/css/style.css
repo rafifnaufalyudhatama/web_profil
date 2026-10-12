@@ -32,28 +32,7 @@
     --shadow-hover: 0 15px 40px rgba(217, 35, 35, 0.15);
 }
 
-/* 2. Dark Mode Theme Variables */
-[data-theme="dark"] {
-    --secondary-color: #F8FAFC;
-    --text-color: #CBD5E1;
-    --text-muted: #94A3B8;
-    --bg-color: #0E101A;
-    
-    --glass-bg: rgba(20, 23, 38, 0.82);
-    --glass-border: rgba(255, 255, 255, 0.09);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-    --card-bg: rgba(26, 30, 48, 0.92);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --subtle-card: rgba(255, 255, 255, 0.035);
-    --border-divider: rgba(255, 255, 255, 0.09);
-    
-    --overlay-bg: rgba(12, 14, 23, 0.84);
-    --nav-scrolled-bg: rgba(18, 20, 33, 0.9);
-    --footer-bg: rgba(14, 16, 26, 0.98);
-    
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    --shadow-hover: 0 15px 40px rgba(217, 35, 35, 0.25);
-}
+
 
 /* 3. Reset & Base Styles */
 * {
@@ -379,32 +358,7 @@ a {
     gap: 12px;
 }
 
-.theme-toggle-btn {
-    background: rgba(255, 255, 255, 0.18);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    cursor: pointer;
-    transition: var(--transition);
-}
 
-.navbar.scrolled .theme-toggle-btn {
-    background: var(--subtle-card);
-    border-color: var(--card-border);
-    color: var(--secondary-color);
-}
-
-.theme-toggle-btn:hover {
-    transform: rotate(20deg) scale(1.08);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
 
 .nav-social-link {
     color: #fff;
@@ -470,18 +424,61 @@ a {
     visibility: visible;
 }
 
-/* 7. Hero Section (Original Atmosphere Preserved) */
+/* 7. Hero Section with Auto Background Carousel */
 .hero-section {
+    position: relative;
     min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 110px 20px 70px;
+    overflow: hidden;
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 1.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    pointer-events: none;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(18, 19, 36, 0.35) 0%, rgba(18, 19, 36, 0.62) 100%);
+    z-index: 2;
+    pointer-events: none;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 3;
     max-width: 900px;
     color: #fff;
 }
@@ -561,6 +558,34 @@ a {
 
 .trust-sep {
     color: rgba(255, 255, 255, 0.4);
+}
+
+/* Carousel Indicator Dots */
+.hero-slider-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+}
+
+.hero-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.hero-dot.active {
+    background: var(--primary-color);
+    width: 28px;
+    border-radius: 12px;
 }
 
 /* 8. Glassmorphic Base Section */

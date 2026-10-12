@@ -35,11 +35,6 @@
             </ul>
 
             <div class="nav-actions">
-                <!-- Theme Toggle Button -->
-                <button type="button" class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Mode" title="Ganti Mode Gelap / Terang">
-                    <i class="ph-bold ph-moon"></i>
-                </button>
-
                 <!-- Minimalist Instagram Link -->
                 <a href="https://www.instagram.com/rafifnaufal64/" target="_blank" rel="noopener" class="nav-social-link" title="Instagram @rafifnaufal64" aria-label="Instagram">
                     <i class="ph-fill ph-instagram-logo"></i>
@@ -63,8 +58,18 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Auto Background Carousel -->
     <header id="hero" class="hero-section">
+        <!-- Hero Background Slider -->
+        <div class="hero-slider" id="heroSlider">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1920&auto=format&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1570459027562-4a916cc6113f?q=80&w=1920&auto=format&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1590559899731-a382839e5549?q=80&w=1920&auto=format&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=1920&auto=format&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1920&auto=format&fit=crop');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+
         <div class="hero-content fade-in-up">
             <div class="hero-tag">
                 <i class="ph-fill ph-sparkle"></i> Private Tour & Sewa Mobil Jepang Berlisensi
@@ -108,6 +113,15 @@
                     <i class="ph-fill ph-shield-check"></i>
                     <span>Harga All-In Transparan</span>
                 </div>
+            </div>
+
+            <!-- Carousel Indicator Dots -->
+            <div class="hero-slider-dots" id="heroSliderDots">
+                <span class="hero-dot active" onclick="goToHeroSlide(0)"></span>
+                <span class="hero-dot" onclick="goToHeroSlide(1)"></span>
+                <span class="hero-dot" onclick="goToHeroSlide(2)"></span>
+                <span class="hero-dot" onclick="goToHeroSlide(3)"></span>
+                <span class="hero-dot" onclick="goToHeroSlide(4)"></span>
             </div>
         </div>
     </header>
@@ -330,7 +344,7 @@
                     <!-- Card 1: Tokyo & Fuji -->
                     <div class="card fade-in-on-scroll">
                         <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=600&auto=format&fit=crop" alt="Tokyo">
+                            <img src="https://images.unsplash.com/photo-1570459027562-4a916cc6113f?q=80&w=800&auto=format&fit=crop" alt="Tokyo & Mount Fuji">
                             <span class="badge">Musim Semi</span>
                         </div>
                         <div class="card-content">
@@ -351,7 +365,7 @@
                     <!-- Card 2: Kyoto & Osaka -->
                     <div class="card fade-in-on-scroll" style="transition-delay: 0.15s">
                         <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?q=80&w=600&auto=format&fit=crop" alt="Kyoto">
+                            <img src="https://images.unsplash.com/photo-1590559899731-a382839e5549?q=80&w=800&auto=format&fit=crop" alt="Kyoto & Osaka">
                             <span class="badge">Budaya</span>
                         </div>
                         <div class="card-content">
@@ -372,7 +386,7 @@
                     <!-- Card 3: Shirakawa-go -->
                     <div class="card fade-in-on-scroll" style="transition-delay: 0.3s">
                         <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1522273400909-fd1a8f77637e?q=80&w=600&auto=format&fit=crop" alt="Shirakawa-go">
+                            <img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?q=80&w=800&auto=format&fit=crop" alt="Shirakawa-go">
                             <span class="badge">Musim Dingin</span>
                         </div>
                         <div class="card-content">
@@ -393,7 +407,7 @@
                     <!-- Card 4: Japan Golden Route -->
                     <div class="card fade-in-on-scroll" style="transition-delay: 0.45s">
                         <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=600&auto=format&fit=crop" alt="Golden Route">
+                            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=800&auto=format&fit=crop" alt="Golden Route">
                             <span class="badge">Rute Terlengkap</span>
                         </div>
                         <div class="card-content">
@@ -414,7 +428,7 @@
                     <!-- Card 5: Hokkaido Snow Wonderland -->
                     <div class="card fade-in-on-scroll" style="transition-delay: 0.6s">
                         <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?q=80&w=600&auto=format&fit=crop" alt="Hokkaido">
+                            <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=800&auto=format&fit=crop" alt="Hokkaido">
                             <span class="badge">Salju & Onsen</span>
                         </div>
                         <div class="card-content">

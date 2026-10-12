@@ -1,48 +1,53 @@
 /* ==========================================================================
    NipponTravel - Main JavaScript
-   Features: Light / Dark Mode Toggle, Smooth Scroll, Carousel, FAQ & Modal
+   Features: Hero Auto-Slide Carousel, Smooth Scroll, Destinations Carousel, FAQ & Modal
    ========================================================================== */
 
-// 1. Theme Management (Light / Dark Mode)
-function initTheme() {
-    const savedTheme = localStorage.getItem('nippon_theme');
-    const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme ? savedTheme : (systemPrefersDark ? 'dark' : 'light');
-    applyTheme(initialTheme);
-}
+// 1. Hero Background Auto-Slide Carousel
+let currentHeroSlide = 0;
+let heroSlideInterval = null;
 
-function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    const toggleBtn = document.getElementById('themeToggle');
-    if (toggleBtn) {
-        const icon = toggleBtn.querySelector('i');
-        if (icon) {
-            if (theme === 'dark') {
-                icon.className = 'ph-bold ph-sun';
-                toggleBtn.setAttribute('title', 'Beralih ke Light Mode');
-            } else {
-                icon.className = 'ph-bold ph-moon';
-                toggleBtn.setAttribute('title', 'Beralih ke Dark Mode');
-            }
-        }
+function initHeroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    if (!slides.length) return;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+        currentHeroSlide = index;
     }
-}
 
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
-    localStorage.setItem('nippon_theme', newTheme);
-}
+    window.goToHeroSlide = function(index) {
+        showSlide(index);
+        resetHeroInterval();
+    };
 
-// Initialize theme immediately to prevent flashing
-initTheme();
+    function nextSlide() {
+        const next = (currentHeroSlide + 1) % slides.length;
+        showSlide(next);
+    }
+
+    function resetHeroInterval() {
+        if (heroSlideInterval) clearInterval(heroSlideInterval);
+        heroSlideInterval = setInterval(nextSlide, 4500);
+    }
+
+    resetHeroInterval();
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Re-verify theme button state after DOM is ready
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-    applyTheme(currentTheme);
+    // Clean up any previously stored dark theme preference
+    localStorage.removeItem('nippon_theme');
+    document.documentElement.removeAttribute('data-theme');
+
+    // Initialize Hero Background Slider
+    initHeroSlider();
 
     // 2. Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
@@ -101,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Carousel Controls Logic
+    // 5. Destinations Carousel Controls Logic
     const track = document.getElementById('carouselTrack');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
