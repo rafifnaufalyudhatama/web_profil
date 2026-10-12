@@ -190,24 +190,65 @@
         </div>
     </section>
 
-    <!-- About Section (Enhanced Original About) -->
+    <!-- About Section (2 Baris x 3 Kolom) -->
     <section id="about" class="about-section">
         <div class="container glass-section fade-in-on-scroll">
-            <div class="about-grid">
-                <div class="about-text slide-in-left">
-                    <h2>Mengapa Memilih NipponTravel?</h2>
-                    <p>Kami adalah spesialis perjalanan wisata ke Jepang dengan pengalaman lebih dari 10 tahun. Kami menyediakan layanan perjalanan eksklusif dan privat yang dirancang khusus untuk memenuhi gaya hidup, kenyamanan, dan keinginan Anda.</p>
-                    <ul class="features-list">
-                        <li><i class="ph-fill ph-check-circle"></i> <strong>100% Private Car:</strong> Kendaraan eksklusif khusus Anda & keluarga tanpa digabung peserta lain.</li>
-                        <li><i class="ph-fill ph-check-circle"></i> <strong>Driver & Guide Indonesia:</strong> Komunikasi lancar dan ramah tanpa hambatan bahasa.</li>
-                        <li><i class="ph-fill ph-check-circle"></i> <strong>Itinerary Fleksibel:</strong> Waktu dan destinasi dapat disesuaikan dengan ritme santai keluarga.</li>
-                        <li><i class="ph-fill ph-check-circle"></i> <strong>Armada Nyaman & Prima:</strong> Toyota Alphard, Hiace Grand Cabin, dan Coaster dalam kondisi wangi & berizin resmi.</li>
-                        <li><i class="ph-fill ph-check-circle"></i> <strong>Harga All-In Transparan:</strong> Biaya sudah termasuk mobil, BBM, tol jalan raya, dan parkir.</li>
-                        <li><i class="ph-fill ph-check-circle"></i> <strong>Bantuan 24/7:</strong> Konsultasi rute, rekomendasi hotel, hingga pendampingan aktif selama trip.</li>
-                    </ul>
+            <h2 class="section-title">Tentang NipponTravel</h2>
+            <p class="section-subtitle">Spesialis private tour & sewa mobil di Jepang dengan komitmen kenyamanan eksklusif, fleksibilitas penuh, dan pelayanan ramah berbahasa Indonesia.</p>
+
+            <div class="about-grid-3x2">
+                <!-- Point 1 -->
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="ph-fill ph-car"></i>
+                    </div>
+                    <h3>100% Private Tour</h3>
+                    <p>Kendaraan eksklusif khusus Anda & keluarga tanpa digabung peserta asing. Privasi terjaga, perjalanan jauh lebih tenang dan leluasa.</p>
                 </div>
-                <div class="about-image slide-in-right">
-                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop" alt="Pemandangan Jepang">
+
+                <!-- Point 2 -->
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="ph-fill ph-chats-circle"></i>
+                    </div>
+                    <h3>Driver Indonesia</h3>
+                    <p>Komunikasi mudah tanpa kendala bahasa. Driver ramah siap merekomendasikan spot foto terindah dan kuliner halal favorit.</p>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="ph-fill ph-sliders-horizontal"></i>
+                    </div>
+                    <h3>Itinerary Fleksibel Bebas</h3>
+                    <p>Atur jadwal dan ritme liburan Anda sendiri. Bebas singgah lebih lama di tempat favorit tanpa terburu-buru oleh jadwal kaku.</p>
+                </div>
+
+                <!-- Point 4 -->
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="ph-fill ph-sparkle"></i>
+                    </div>
+                    <h3>Armada Prima & Nyaman</h3>
+                    <p>Pilihan Toyota Alphard, Hiace Grand Cabin, & Coaster dalam kondisi bersih, wangi, ber-AC dingin, dan berizin resmi transportasi Jepang.</p>
+                </div>
+
+                <!-- Point 5 -->
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="ph-fill ph-shield-check"></i>
+                    </div>
+                    <h3>Harga All-In Transparan</h3>
+                    <p>Biaya sewa sudah mencakup mobil, bahan bakar (BBM), tol jalan bebas hambatan, dan tiket parkir tanpa ada biaya tersembunyi.</p>
+                </div>
+
+                <!-- Point 6 -->
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="ph-fill ph-headset"></i>
+                    </div>
+                    <h3>Pendampingan Siaga 24/7</h3>
+                    <p>Tim admin kami responsif mendampingi kebutuhan Anda sejak konsultasi rute, persiapan visa, hingga kepulangan via WhatsApp.</p>
                 </div>
             </div>
         </div>
