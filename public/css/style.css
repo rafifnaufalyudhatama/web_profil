@@ -20,6 +20,7 @@
     --card-bg: rgba(255, 255, 255, 0.92);
     --card-border: rgba(0, 0, 0, 0.06);
     --subtle-card: rgba(0, 0, 0, 0.025);
+    --border-divider: rgba(0, 0, 0, 0.08);
     
     --overlay-bg: rgba(250, 250, 252, 0.68);
     --nav-scrolled-bg: rgba(255, 255, 255, 0.88);
@@ -44,6 +45,7 @@
     --card-bg: rgba(26, 30, 48, 0.92);
     --card-border: rgba(255, 255, 255, 0.08);
     --subtle-card: rgba(255, 255, 255, 0.035);
+    --border-divider: rgba(255, 255, 255, 0.09);
     
     --overlay-bg: rgba(12, 14, 23, 0.84);
     --nav-scrolled-bg: rgba(18, 20, 33, 0.9);
@@ -667,82 +669,61 @@ a {
     margin-top: auto;
 }
 
-/* 10. About Section (2 Baris x 3 Kolom) */
+/* 10. About Section (Layout Minimalis Sesuai Gambar) */
 .about-section {
     padding: 20px 0;
 }
 
-.about-grid-3x2 {
+.features-layout-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 30px;
+    border-top: 1px solid var(--border-divider);
 }
 
-.about-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: 28px 24px;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-.about-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: transparent;
+.feature-item {
+    padding: 38px 40px;
+    border-bottom: 1px solid var(--border-divider);
     transition: var(--transition);
 }
 
-.about-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-hover);
-    border-color: rgba(217, 35, 35, 0.25);
+.feature-item:hover {
+    background: var(--subtle-card);
 }
 
-.about-card:hover::before {
-    background: var(--primary-color);
+/* Vertical divider for odd items (Left column: 01, 03, 05) */
+.feature-item:nth-child(odd) {
+    border-right: 1px solid var(--border-divider);
+    padding-left: 20px;
 }
 
-.about-card-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    background: var(--primary-subtle);
+/* Even items (Right column: 02, 04, 06) */
+.feature-item:nth-child(even) {
+    padding-right: 20px;
+}
+
+.feature-num {
+    display: block;
     color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.75rem;
-    margin-bottom: 18px;
-    transition: var(--transition);
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
 }
 
-.about-card:hover .about-card-icon {
-    background: var(--primary-color);
-    color: #fff;
-    transform: scale(1.06);
-}
-
-.about-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
+.feature-item h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--secondary-color);
+    margin-bottom: 10px;
+    line-height: 1.3;
 }
 
-.about-card p {
-    font-size: 0.92rem;
+.feature-item p {
+    font-size: 0.98rem;
     color: var(--text-muted);
-    line-height: 1.55;
-    margin-bottom: 0;
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* 11. Pilihan Armada (Fleet Grid) */
@@ -1517,9 +1498,7 @@ footer {
         padding: 50px 30px;
     }
     
-    .about-grid-3x2 {
-        grid-template-columns: repeat(2, 1fr);
-    }
+
 
     .fleet-grid {
         grid-template-columns: 1fr;
@@ -1622,8 +1601,30 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .about-grid-3x2 {
+    .features-layout-grid {
         grid-template-columns: 1fr;
+    }
+
+    .feature-item {
+        padding: 24px 10px;
+        border-bottom: 1px solid var(--border-divider) !important;
+    }
+
+    .feature-item:last-child {
+        border-bottom: none !important;
+    }
+
+    .feature-item:nth-child(odd) {
+        border-right: none;
+        padding-left: 10px;
+    }
+
+    .feature-item:nth-child(even) {
+        padding-right: 10px;
+    }
+
+    .feature-item h3 {
+        font-size: 1.3rem;
     }
 
     .card {

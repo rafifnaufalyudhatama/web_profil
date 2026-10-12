@@ -190,65 +190,53 @@
         </div>
     </section>
 
-    <!-- About Section (2 Baris x 3 Kolom) -->
+    <!-- About Section (Layout Bergaris Minimalis Sesuai Screenshot) -->
     <section id="about" class="about-section">
         <div class="container glass-section fade-in-on-scroll">
-            <h2 class="section-title">Tentang NipponTravel</h2>
-            <p class="section-subtitle">Spesialis private tour & sewa mobil di Jepang dengan komitmen kenyamanan eksklusif, fleksibilitas penuh, dan pelayanan ramah berbahasa Indonesia.</p>
+            <h2 class="section-title">Mengapa Memilih NipponTravel?</h2>
+            <p class="section-subtitle">Solusi perjalanan wisata privat dan sewa mobil terbaik di Jepang dengan kenyamanan maksimal dan pelayanan profesional.</p>
 
-            <div class="about-grid-3x2">
-                <!-- Point 1 -->
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="ph-fill ph-car"></i>
-                    </div>
-                    <h3>100% Private Tour</h3>
-                    <p>Kendaraan eksklusif khusus Anda & keluarga tanpa digabung peserta asing. Privasi terjaga, perjalanan jauh lebih tenang dan leluasa.</p>
+            <div class="features-layout-grid">
+                <!-- 01 -->
+                <div class="feature-item">
+                    <span class="feature-num">01</span>
+                    <h3>Private & Personal</h3>
+                    <p>Perjalanan hanya untuk Anda dan rombongan sendiri.</p>
                 </div>
 
-                <!-- Point 2 -->
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="ph-fill ph-chats-circle"></i>
-                    </div>
-                    <h3>Driver Indonesia</h3>
-                    <p>Komunikasi mudah tanpa kendala bahasa. Driver ramah siap merekomendasikan spot foto terindah dan kuliner halal favorit.</p>
+                <!-- 02 -->
+                <div class="feature-item">
+                    <span class="feature-num">02</span>
+                    <h3>Fleksibel Sesuai Anda</h3>
+                    <p>Rute, hotel, tempo, dan destinasi dapat disesuaikan.</p>
                 </div>
 
-                <!-- Point 3 -->
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="ph-fill ph-sliders-horizontal"></i>
-                    </div>
-                    <h3>Itinerary Fleksibel Bebas</h3>
-                    <p>Atur jadwal dan ritme liburan Anda sendiri. Bebas singgah lebih lama di tempat favorit tanpa terburu-buru oleh jadwal kaku.</p>
+                <!-- 03 -->
+                <div class="feature-item">
+                    <span class="feature-num">03</span>
+                    <h3>Driver Multibahasa</h3>
+                    <p>Pilihan bahasa Indonesia, Mandarin, English, atau Jepang sesuai ketersediaan.</p>
                 </div>
 
-                <!-- Point 4 -->
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="ph-fill ph-sparkle"></i>
-                    </div>
-                    <h3>Armada Prima & Nyaman</h3>
-                    <p>Pilihan Toyota Alphard, Hiace Grand Cabin, & Coaster dalam kondisi bersih, wangi, ber-AC dingin, dan berizin resmi transportasi Jepang.</p>
+                <!-- 04 -->
+                <div class="feature-item">
+                    <span class="feature-num">04</span>
+                    <h3>Armada Hingga 16 Penumpang</h3>
+                    <p>Pilihan kendaraan untuk keluarga kecil hingga rombongan.</p>
                 </div>
 
-                <!-- Point 5 -->
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="ph-fill ph-shield-check"></i>
-                    </div>
-                    <h3>Harga All-In Transparan</h3>
-                    <p>Biaya sewa sudah mencakup mobil, bahan bakar (BBM), tol jalan bebas hambatan, dan tiket parkir tanpa ada biaya tersembunyi.</p>
+                <!-- 05 -->
+                <div class="feature-item">
+                    <span class="feature-num">05</span>
+                    <h3>Dukungan Bahasa Indonesia</h3>
+                    <p>Konsultasi lebih mudah dengan tim yang memahami wisatawan Indonesia.</p>
                 </div>
 
-                <!-- Point 6 -->
-                <div class="about-card">
-                    <div class="about-card-icon">
-                        <i class="ph-fill ph-headset"></i>
-                    </div>
-                    <h3>Pendampingan Siaga 24/7</h3>
-                    <p>Tim admin kami responsif mendampingi kebutuhan Anda sejak konsultasi rute, persiapan visa, hingga kepulangan via WhatsApp.</p>
+                <!-- 06 -->
+                <div class="feature-item">
+                    <span class="feature-num">06</span>
+                    <h3>Berpengalaman di Jepang</h3>
+                    <p>Lebih dari 8 tahun memahami rute dan kebutuhan perjalanan di Jepang.</p>
                 </div>
             </div>
         </div>
