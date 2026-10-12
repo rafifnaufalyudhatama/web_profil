@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>NipponTravel - Agen Perjalanan & Private Tour Jepang Terbaik</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +14,7 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v={{ time() }}">
 </head>
 <body>
 
@@ -60,15 +63,25 @@
 
     <!-- Hero Section with Auto Background Carousel -->
     <header id="hero" class="hero-section">
-        <!-- Hero Background Slider -->
+        <!-- Hero Background Slider Track -->
         <div class="hero-slider" id="heroSlider">
-            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1920&auto=format&fit=crop');"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1570459027562-4a916cc6113f?q=80&w=1920&auto=format&fit=crop');"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1590559899731-a382839e5549?q=80&w=1920&auto=format&fit=crop');"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=1920&auto=format&fit=crop');"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1920&auto=format&fit=crop');"></div>
+            <div class="hero-slider-track" id="heroSliderTrack">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?q=80&w=1920&auto=format&fit=crop');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1920&auto=format&fit=crop');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1590559899731-a382839e5549?q=80&w=1920&auto=format&fit=crop');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1570459027562-4a916cc6113f?q=80&w=1920&auto=format&fit=crop');"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509023464722-18d996393ca8?q=80&w=1920&auto=format&fit=crop');"></div>
+            </div>
         </div>
         <div class="hero-overlay"></div>
+
+        <!-- Hero Slider Arrow Controls -->
+        <button type="button" class="hero-arrow-btn hero-arrow-prev" onclick="prevHeroSlide()" aria-label="Slide Sebelumnya">
+            <i class="ph-bold ph-caret-left"></i>
+        </button>
+        <button type="button" class="hero-arrow-btn hero-arrow-next" onclick="nextHeroSlide()" aria-label="Slide Berikutnya">
+            <i class="ph-bold ph-caret-right"></i>
+        </button>
 
         <div class="hero-content fade-in-up">
             <div class="hero-tag">
@@ -407,7 +420,7 @@
                     <!-- Card 4: Japan Golden Route -->
                     <div class="card fade-in-on-scroll" style="transition-delay: 0.45s">
                         <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=800&auto=format&fit=crop" alt="Golden Route">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=800&auto=format&fit=crop" alt="Golden Route">
                             <span class="badge">Rute Terlengkap</span>
                         </div>
                         <div class="card-content">
@@ -428,7 +441,7 @@
                     <!-- Card 5: Hokkaido Snow Wonderland -->
                     <div class="card fade-in-on-scroll" style="transition-delay: 0.6s">
                         <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=800&auto=format&fit=crop" alt="Hokkaido">
+                            <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=800&auto=format&fit=crop" alt="Hokkaido">
                             <span class="badge">Salju & Onsen</span>
                         </div>
                         <div class="card-content">
@@ -669,7 +682,13 @@
         </div>
     </div>
 
-    <!-- Custom JS -->
-    <script src="/js/main.js"></script>
+    <!-- Custom JS with Cache-Busting -->
+    <script src="/js/main.js?v={{ time() }}"></script>
+    <script>
+        // Ensure hero slider runs immediately
+        if (typeof initHeroSlider === 'function') {
+            initHeroSlider();
+        }
+    </script>
 </body>
 </html>

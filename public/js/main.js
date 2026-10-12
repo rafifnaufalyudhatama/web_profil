@@ -8,18 +8,29 @@ let currentHeroSlide = 0;
 let heroSlideInterval = null;
 
 function initHeroSlider() {
+    const track = document.getElementById('heroSliderTrack');
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
     if (!slides.length) return;
 
     function showSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        
+        currentHeroSlide = index;
+
+        if (track) {
+            // Smooth horizontal sliding: 5 slides = 20% each
+            const offset = (index * 100) / slides.length;
+            track.style.transform = `translateX(-${offset}%)`;
+        }
+
         slides.forEach((slide, i) => {
             slide.classList.toggle('active', i === index);
         });
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === index);
         });
-        currentHeroSlide = index;
     }
 
     window.goToHeroSlide = function(index) {
@@ -27,16 +38,24 @@ function initHeroSlider() {
         resetHeroInterval();
     };
 
-    function nextSlide() {
-        const next = (currentHeroSlide + 1) % slides.length;
-        showSlide(next);
-    }
+    window.nextHeroSlide = function() {
+        showSlide(currentHeroSlide + 1);
+        resetHeroInterval();
+    };
+
+    window.prevHeroSlide = function() {
+        showSlide(currentHeroSlide - 1);
+        resetHeroInterval();
+    };
 
     function resetHeroInterval() {
         if (heroSlideInterval) clearInterval(heroSlideInterval);
-        heroSlideInterval = setInterval(nextSlide, 4500);
+        heroSlideInterval = setInterval(() => {
+            showSlide(currentHeroSlide + 1);
+        }, 4000);
     }
 
+    showSlide(0);
     resetHeroInterval();
 }
 

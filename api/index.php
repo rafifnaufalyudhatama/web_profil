@@ -38,5 +38,15 @@ foreach ($storageDirs as $dir) {
     }
 }
 
+// Bersihkan view terkompilasi lama di /tmp/views agar selalu menyajikan template terbaru
+if (is_dir('/tmp/views')) {
+    $cachedViews = glob('/tmp/views/*.php');
+    if ($cachedViews) {
+        foreach ($cachedViews as $cv) {
+            @unlink($cv);
+        }
+    }
+}
+
 // Forward request ke entry point Laravel
 require __DIR__ . '/../public/index.php';
