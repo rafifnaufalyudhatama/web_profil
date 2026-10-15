@@ -84,49 +84,9 @@
         </button>
 
         <div class="hero-content fade-in-up">
-            <div class="hero-tag">
-                <i class="ph-fill ph-sparkle"></i> Private Tour & Sewa Mobil Jepang Berlisensi
-            </div>
             <h1>Temukan Keindahan <span>Jepang</span> Bersama Kami</h1>
             <p>Pengalaman wisata privat & sewa mobil tak terlupakan dari kilauan kota Tokyo hingga ketenangan kuil di Kyoto. Jadwal fleksibel, armada mewah (Alphard & Hiace), serta pendampingan driver berbahasa Indonesia.</p>
-            
-            <div class="hero-buttons">
-                <a href="#destinations" class="btn-primary">Jelajahi Paket</a>
-                <a href="#services" class="btn-secondary">Layanan Kami</a>
-                
-                <!-- Minimalist WhatsApp Button -->
-                <a href="https://wa.me/081392254657?text=Halo%20NipponTravel,%20saya%20tertarik%20untuk%20konsultasi%20liburan%20ke%20Jepang" target="_blank" rel="noopener" class="btn-min-wa">
-                    <i class="ph-fill ph-whatsapp-logo"></i> WhatsApp
-                </a>
 
-                <!-- Minimalist Instagram Button -->
-                <a href="https://www.instagram.com/rafifnaufal64/" target="_blank" rel="noopener" class="btn-min-ig">
-                    <i class="ph-fill ph-instagram-logo"></i> @rafifnaufal64
-                </a>
-            </div>
-
-            <!-- Subtle Trust Highlights Strip -->
-            <div class="hero-trust-strip">
-                <div class="trust-item">
-                    <i class="ph-fill ph-car"></i>
-                    <span>100% Private Car</span>
-                </div>
-                <div class="trust-sep">•</div>
-                <div class="trust-item">
-                    <i class="ph-fill ph-user-check"></i>
-                    <span>Driver Indonesia</span>
-                </div>
-                <div class="trust-sep">•</div>
-                <div class="trust-item">
-                    <i class="ph-fill ph-sliders-horizontal"></i>
-                    <span>Itinerary Bebas</span>
-                </div>
-                <div class="trust-sep">•</div>
-                <div class="trust-item">
-                    <i class="ph-fill ph-shield-check"></i>
-                    <span>Harga All-In Transparan</span>
-                </div>
-            </div>
 
             <!-- Carousel Indicator Dots -->
             <div class="hero-slider-dots" id="heroSliderDots">
