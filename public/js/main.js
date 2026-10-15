@@ -3,60 +3,156 @@
    Features: Hero Auto-Slide Carousel, Smooth Scroll, Destinations Carousel, FAQ & Modal
    ========================================================================== */
 
-// 1. Hero Background Auto-Slide Carousel
-let currentHeroSlide = 0;
+// 1. Hero Background Seamless Infinite Auto-Slide Carousel
 let heroSlideInterval = null;
+let currentHeroIndex = 1;
+let isHeroTransitioning = false;
+let heroTransitionFallback = null;
 
 function initHeroSlider() {
     const track = document.getElementById('heroSliderTrack');
-    const slides = document.querySelectorAll('.hero-slide');
+    if (!track) return;
+    if (track.dataset.infiniteInit === 'true') return;
+
+    const originalSlides = Array.from(track.querySelectorAll('.hero-slide'));
+    const originalCount = originalSlides.length;
+    if (originalCount < 2) return;
+
     const dots = document.querySelectorAll('.hero-dot');
-    if (!slides.length) return;
 
-    function showSlide(index) {
-        if (index < 0) index = slides.length - 1;
-        if (index >= slides.length) index = 0;
-        
-        currentHeroSlide = index;
+    // Clone first and last slides for seamless infinite loop
+    const firstClone = originalSlides[0].cloneNode(true);
+    const lastClone = originalSlides[originalCount - 1].cloneNode(true);
+    firstClone.classList.remove('active');
+    lastClone.classList.remove('active');
 
-        if (track) {
-            // Smooth horizontal sliding: 5 slides = 20% each
-            const offset = (index * 100) / slides.length;
-            track.style.transform = `translateX(-${offset}%)`;
-        }
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, originalSlides[0]);
+    track.dataset.infiniteInit = 'true';
 
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-        });
+    const allSlides = track.querySelectorAll('.hero-slide');
+    const totalCount = allSlides.length;
+
+    // Set initial position to index 1 (the first real slide) without animation
+    currentHeroIndex = 1;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${currentHeroIndex * 100}%)`;
+    void track.offsetWidth; // Force layout reflow
+
+    function updateDots(activeDotIndex) {
         dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
+            dot.classList.toggle('active', i === activeDotIndex);
         });
     }
 
-    window.goToHeroSlide = function(index) {
-        showSlide(index);
-        resetHeroInterval();
-    };
+    function checkWrapAround() {
+        if (currentHeroIndex >= totalCount - 1) {
+            // Reached clone of the first slide -> snap back to real first slide without animation
+            track.style.transition = 'none';
+            currentHeroIndex = 1;
+            track.style.transform = `translateX(-${currentHeroIndex * 100}%)`;
+            void track.offsetWidth;
+        } else if (currentHeroIndex <= 0) {
+            // Reached clone of the last slide -> snap back to real last slide without animation
+            track.style.transition = 'none';
+            currentHeroIndex = totalCount - 2;
+            track.style.transform = `translateX(-${currentHeroIndex * 100}%)`;
+            void track.offsetWidth;
+        }
+    }
+
+    track.addEventListener('transitionend', (e) => {
+        if (e.target !== track) return;
+        isHeroTransitioning = false;
+        if (heroTransitionFallback) {
+            clearTimeout(heroTransitionFallback);
+            heroTransitionFallback = null;
+        }
+        checkWrapAround();
+    });
+
+    function moveToSlide(targetIndex, smooth = true) {
+        if (isHeroTransitioning) return;
+        isHeroTransitioning = true;
+        currentHeroIndex = targetIndex;
+
+        // Calculate which dot to activate
+        let dotIndex;
+        if (currentHeroIndex >= totalCount - 1) {
+            dotIndex = 0;
+        } else if (currentHeroIndex <= 0) {
+            dotIndex = originalCount - 1;
+        } else {
+            dotIndex = currentHeroIndex - 1;
+        }
+        updateDots(dotIndex);
+
+        if (smooth) {
+            track.style.transition = 'transform 0.85s cubic-bezier(0.25, 1, 0.5, 1)';
+        } else {
+            track.style.transition = 'none';
+        }
+
+        track.style.transform = `translateX(-${currentHeroIndex * 100}%)`;
+
+        // Safety fallback in case transitionend event does not fire
+        if (heroTransitionFallback) clearTimeout(heroTransitionFallback);
+        heroTransitionFallback = setTimeout(() => {
+            if (isHeroTransitioning) {
+                isHeroTransitioning = false;
+                checkWrapAround();
+            }
+        }, 950);
+    }
 
     window.nextHeroSlide = function() {
-        showSlide(currentHeroSlide + 1);
+        if (isHeroTransitioning) return;
+        moveToSlide(currentHeroIndex + 1);
         resetHeroInterval();
     };
 
     window.prevHeroSlide = function() {
-        showSlide(currentHeroSlide - 1);
+        if (isHeroTransitioning) return;
+        moveToSlide(currentHeroIndex - 1);
         resetHeroInterval();
     };
 
-    function resetHeroInterval() {
-        if (heroSlideInterval) clearInterval(heroSlideInterval);
+    window.goToHeroSlide = function(dotIndex) {
+        if (isHeroTransitioning) return;
+        moveToSlide(dotIndex + 1);
+        resetHeroInterval();
+    };
+
+    function startHeroInterval() {
+        stopHeroInterval();
         heroSlideInterval = setInterval(() => {
-            showSlide(currentHeroSlide + 1);
+            if (!document.hidden && !isHeroTransitioning) {
+                window.nextHeroSlide();
+            }
         }, 4000);
     }
 
-    showSlide(0);
-    resetHeroInterval();
+    function stopHeroInterval() {
+        if (heroSlideInterval) {
+            clearInterval(heroSlideInterval);
+            heroSlideInterval = null;
+        }
+    }
+
+    function resetHeroInterval() {
+        startHeroInterval();
+    }
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopHeroInterval();
+        } else {
+            startHeroInterval();
+        }
+    });
+
+    updateDots(0);
+    startHeroInterval();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

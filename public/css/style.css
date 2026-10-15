@@ -448,20 +448,19 @@ a {
 
 .hero-slider-track {
     display: flex;
-    width: 500%;
     height: 100%;
-    transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: transform;
 }
 
 .hero-slide {
-    width: 20%;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
     height: 100%;
     position: relative;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    flex-shrink: 0;
 }
 
 .hero-overlay {
